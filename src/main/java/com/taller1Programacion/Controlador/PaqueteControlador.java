@@ -32,4 +32,20 @@ public class PaqueteControlador {
         paqueteServicio.guardar(paquete);
         return "redirect:/paquetes";
     }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
+        Paquete paquete = paqueteServicio.buscarPorId(id);
+        if (paquete == null) {
+            return "redirect:/paquetes";
+        }
+        model.addAttribute("paquete", paquete);
+        return "pages/formPaquete";
+    }
+
+    @PostMapping("/eliminar/{id}")
+    public String eliminarPaquete(@PathVariable Long id) {
+        paqueteServicio.eliminarPorId(id);
+        return "redirect:/paquetes";
+    }
 }

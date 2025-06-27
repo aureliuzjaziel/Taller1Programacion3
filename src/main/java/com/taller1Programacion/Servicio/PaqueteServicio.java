@@ -25,4 +25,8 @@ public class PaqueteServicio {
     public Paquete buscarPorId(Long id) {
         return paqueteRepositorio.findById(id).orElse(null);
     }
+
+    public void eliminarPorId(Long id) {
+        paqueteRepositorio.deleteById(id);
+    }
 }

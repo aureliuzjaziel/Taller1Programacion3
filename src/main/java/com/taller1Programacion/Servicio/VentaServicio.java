@@ -25,4 +25,8 @@ public class VentaServicio {
     public Venta buscarPorId(Long id) {
         return ventaRepositorio.findById(id).orElse(null);
     }
+
+    public void eliminarPorId(Long id) {
+        ventaRepositorio.deleteById(id);
+    }
 }

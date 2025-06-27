@@ -18,7 +18,7 @@ public class ClienteServicio {
         return clienteRepositorio.findAll();
     }
 
-    public Cliente guardarCliente(Cliente cliente) {
+    public Cliente guardar(Cliente cliente) {
         return clienteRepositorio.save(cliente);
     }
 
@@ -26,6 +26,7 @@ public class ClienteServicio {
         return clienteRepositorio.findById(id).orElse(null);
     }
 
-
-
+    public void eliminarPorId(Long id) {
+        clienteRepositorio.deleteById(id);
+    }
 }

@@ -1,6 +1,7 @@
 package com.taller1Programacion.Entidad;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Cliente {
@@ -11,8 +12,8 @@ public class Cliente {
     private String apellido;
     private String email;
     private String telefono;
-
-    // Getters y Setters
+    private String cedula;
+    private LocalDate fechaNacimiento;
 
     public Long getIdCliente() {
         return idCliente;
@@ -52,5 +53,21 @@ public class Cliente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 }

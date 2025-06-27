@@ -52,4 +52,41 @@ public class VentaControlador {
         ventaServicio.guardar(venta);
         return "redirect:/ventas";
     }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
+        Venta venta = ventaServicio.buscarPorId(id);
+        if (venta == null) {
+            return "redirect:/ventas";
+        }
+        model.addAttribute("venta", venta);
+        model.addAttribute("clientes", clienteServicio.listarTodos());
+        model.addAttribute("paquetes", paqueteServicio.listarTodos());
+        return "pages/formVenta";
+    }
+
+    @PostMapping("/actualizar/{id}")
+    public String actualizarVenta(@PathVariable Long id, @ModelAttribute Venta venta) {
+        // Igual que guardar pero actualizando el existente
+        double subtotal =
+                venta.getCantidadAdultos() * venta.getPaquete().getPrecioAdulto() +
+                        venta.getCantidadNinos() * venta.getPaquete().getPrecioNino() +
+                        venta.getCantidadAncianos() * venta.getPaquete().getPrecioAnciano();
+        double iva = subtotal * 0.12;
+        double total = subtotal + iva;
+
+        venta.setSubtotal(subtotal);
+        venta.setIva(iva);
+        venta.setTotal(total);
+
+        venta.setIdVenta(id);
+        ventaServicio.guardar(venta);
+        return "redirect:/ventas";
+    }
+
+    @PostMapping("/eliminar/{id}")
+    public String eliminarVenta(@PathVariable Long id) {
+        ventaServicio.eliminarPorId(id);
+        return "redirect:/ventas";
+    }
 }

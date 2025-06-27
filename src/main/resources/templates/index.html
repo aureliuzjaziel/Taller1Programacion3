@@ -1,4 +1,4 @@
-<!-- src/main/resources/templates/index.html -->
+
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -8,48 +8,48 @@
     <link rel="stylesheet" th:href="@{/css/estilos.css}">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-        <a class="navbar-brand" href="#">Agencia de Viajes</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/paquetes}">Paquetes Turísticos</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/ventas}">Ventas/Facturación</a></li>
-                <li class="nav-item"><a class="nav-link" th:href="@{/nosotros}">Nosotros</a></li>
-            </ul>
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" th:href="@{/login}">Inicio de Sesión</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<header class="bg-light py-5">
-    <div class="container text-center">
-        <h1 class="display-4">Bienvenido a la Agencia de Viajes</h1>
-        <p class="lead">Descubre destinos increíbles y vive experiencias únicas con nosotros.</p>
-    </div>
-</header>
-<main class="container my-5">
-    <section class="row">
-        <div class="col-md-6">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow" alt="Viaje">
-        </div>
-        <div class="col-md-6 d-flex align-items-center">
-            <div>
-                <h2>Gestiona tu viaje</h2>
-                <p>Administra clientes, paquetes turísticos, ventas y reservas desde este panel principal. ¡Haz de tu viaje una experiencia inolvidable!</p>
-                <a th:href="@{/paquetes}" class="btn btn-primary">Ver Paquetes</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Agencia de Viajes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/paquetes}">Paquetes Turísticos</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/ventas}">Ventas/Facturación</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/nosotros}">Nosotros</a></li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/login}">Inicio de Sesión</a></li>
+                </ul>
             </div>
         </div>
-    </section>
-</main>
-<footer class="bg-primary text-white text-center py-3">
-    <p class="mb-0">&copy; 2024 Agencia de Viajes</p>
-</footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </nav>
+    <header class="bg-light py-5">
+        <div class="container text-center">
+            <h1 class="display-4">Bienvenido a la Agencia de Viajes</h1>
+            <p class="lead">Descubre destinos increíbles y vive experiencias únicas con nosotros.</p>
+        </div>
+    </header>
+    <main class="container my-5">
+        <section class="row">
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow" alt="Viaje">
+            </div>
+            <div class="col-md-6 d-flex align-items-center">
+                <div>
+                    <h2>Gestiona tu viaje</h2>
+                    <p>Administra clientes, paquetes turísticos, ventas y reservas desde este panel principal. ¡Haz de tu viaje una experiencia inolvidable!</p>
+                    <a th:href="@{/paquetes}" class="btn btn-primary">Ver Paquetes</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-primary text-white text-center py-3">
+        <p class="mb-0">&copy; 2024 Agencia de Viajes</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
