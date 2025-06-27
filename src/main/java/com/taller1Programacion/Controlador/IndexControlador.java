@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexControlador {
 
     @GetMapping("/")
-    public String index() {
+    public String mostrarInicio() {
         return "index";
     }
 }

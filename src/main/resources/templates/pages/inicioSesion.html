@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" th:href="@{/css/estilo-turismo.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a th:href="@{/}">Inicio</a>
+        <a th:href="@{/pages/nosotros}">Nosotros</a>
+        <a th:href="@{/pages/registro}">Registro</a>
+    </nav>
+</header>
+<main>
+    <h2>Iniciar Sesión</h2>
+    <form th:action="@{/iniciarSesion}" method="post">
+        <label>Correo: <input type="email" name="correo" required /></label><br>
+        <label>Contraseña: <input type="password" name="contrasena" required /></label><br>
+        <button type="submit">Ingresar</button>
+    </form>
+</main>
+</body>
+</html>

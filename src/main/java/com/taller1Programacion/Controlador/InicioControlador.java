@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class InicioControlador {
-    @GetMapping("inicioSesion")
-    public String login() {
-        return "inicioSesion/inicioSesion";
+
+    @GetMapping("/pages/inicioSesion")
+    public String mostrarInicioSesion() {
+        return "pages/inicioSesion";
     }
 }
