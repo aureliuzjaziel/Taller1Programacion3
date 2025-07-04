@@ -16,32 +16,23 @@
                         <div th:if="${param.exito}" class="alert alert-success">
                             Usuario registrado correctamente.
                         </div>
-                        <div th:if="${#fields.hasErrors()}" class="alert alert-danger">
-                            <ul>
-                                <li th:each="err : ${#fields.errors()}" th:text="${err}"></li>
-                            </ul>
-                        </div>
                         <div class="mb-3">
                             <label class="form-label">Nombre de usuario</label>
-                            <input type="text" th:field="*{nombreUsuario}" class="form-control" required>
-                            <div class="text-danger" th:if="${#fields.hasErrors('nombreUsuario')}" th:errors="*{nombreUsuario}"></div>
+                            <input type="text" th:field="*{username}" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email</label>
                             <input type="email" th:field="*{email}" class="form-control" required>
-                            <div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Contraseña</label>
-                            <input type="password" th:field="*{contraseña}" class="form-control" required>
-                            <div class="text-danger" th:if="${#fields.hasErrors('contraseña')}" th:errors="*{contraseña}"></div>
+                            <input type="password" th:field="*{password}" class="form-control" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Rol</label>
                             <select th:field="*{rol}" class="form-control" required>
-                                <option th:each="rol : ${roles}" th:value="${rol}" th:text="${rol.nombreRol}"></option>
+                                <option th:each="rol : ${roles}" th:value="${rol.idRol}" th:text="${rol.nombreRol}"></option>
                             </select>
-                            <div class="text-danger" th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}"></div>
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Registrar Usuario</button>
                     </form>

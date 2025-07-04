@@ -16,6 +16,7 @@ public class ClienteControlador {
         this.clienteServicio = clienteServicio;
     }
 
+    // Método para listar todos los clientes
     @GetMapping
     public String listarClientes(Model model) {
         model.addAttribute("clientes", clienteServicio.listarTodos());
