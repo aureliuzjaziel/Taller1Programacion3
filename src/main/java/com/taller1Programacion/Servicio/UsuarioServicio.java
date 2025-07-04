@@ -13,14 +13,15 @@ public class UsuarioServicio {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     public Usuario registrarUsuario(Usuario usuario) {
-        usuario.setContraseña(passwordEncoder.encode(usuario.getContraseña()));
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         return usuarioRepositorio.save(usuario);
     }
 
-    public void eliminarUsuario(Long id) {
-        usuarioRepositorio.deleteById(id);
+    public List<Usuario> listarUsuarios() {
+        return usuarioRepositorio.findAll();
     }
 }

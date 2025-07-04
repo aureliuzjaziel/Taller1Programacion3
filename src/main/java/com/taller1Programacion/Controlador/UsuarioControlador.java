@@ -8,20 +8,15 @@ import com.taller1Programacion.Servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @Controller
 @RequestMapping("/usuarios")
-public class UsuarioControlador {
-
-    @Autowired
-    private UsuarioServicio usuarioServicio;
+public class UsuarioControlador {@Autowired
+private UsuarioServicio usuarioServicio;
 
     @Autowired
     private RolRepositorio rolRepositorio;
@@ -35,7 +30,9 @@ public class UsuarioControlador {
     }
 
     @PostMapping("/guardar")
-    public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario) {
+    public String guardarUsuario(@ModelAttribute("usuario") Usuario usuario, @RequestParam("rol") Long rolId) {
+        Rol rol = rolRepositorio.findById(rolId).orElse(null);
+        usuario.setRol(rol);
         usuarioServicio.registrarUsuario(usuario);
         return "redirect:/usuarios/registro?exito";
     }
