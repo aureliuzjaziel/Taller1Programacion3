@@ -10,15 +10,18 @@ public class Usuario {
     private Long idUsuario;
 
     @Column(unique = true, nullable = false)
-    private String username;
+    private String nombreUsuario;
     @Column(unique = true, nullable = false)
     private String email;
     @Column(nullable = false)
-    private String password;
+    private String contraseña;
 
+    @Temporal(TemporalType.DATE)
+    private Date fechaRegistro;
 
-
-
+    @ManyToOne
+    @JoinColumn(name = "idRol")
+    private Rol rol;
 
     public Long getIdUsuario() {
         return idUsuario;
@@ -28,12 +31,12 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
-    public String getUsername() {
-        return username;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
 
     public String getEmail() {
@@ -44,12 +47,27 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
+    public Date getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
 }
