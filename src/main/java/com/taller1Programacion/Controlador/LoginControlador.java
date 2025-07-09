@@ -20,8 +20,8 @@ public String redirigirPorRol(Authentication authentication) {
                 .orElse("");
 
         if (role.equals("ROLE_ADMINISTRADOR")) {
-            return "redirect:/principal/index";
-        } else if (role.equals("ROLE_VENDENDOR")) {
+            return "redirect:/principal";
+        } else if (role.equals("ROLE_VENDEDOR")) {
             return "redirect:/clientes";
         } else {
             return "redirect:/login?error";

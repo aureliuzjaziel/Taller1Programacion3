@@ -26,7 +26,7 @@ public class UsuarioControlador {
     private RolServicio rolServicio;
 
     //leer usuarios
-    @GetMapping
+    @GetMapping ("/lista")
     public String listarUsuarios(Model model) {
         List<Usuario> usuarios = usuarioServicio.mostrarUsuarios();
         model.addAttribute("usuarios", usuarios);

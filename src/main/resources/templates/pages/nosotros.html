@@ -2,33 +2,144 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Nosotros</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Nosotros - Agencia de Viajes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
 </head>
 <body class="bg-light">
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card shadow">
-                    <div class="card-body">
-                        <h2 class="card-title text-center mb-4">Sobre Nosotros</h2>
-                        <p>
-                            Somos una agencia de viajes comprometida con ofrecer experiencias inolvidables a nuestros clientes.
-                            Nuestro equipo cuenta con años de experiencia en la industria turística y trabajamos día a día para crear los mejores paquetes adaptados a tus necesidades.
-                        </p>
-                        <ul>
-                            <li>Experiencia y profesionalismo</li>
-                            <li>Paquetes a medida para toda la familia</li>
-                            <li>Asesoría personalizada</li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a th:href="@{/}" class="btn btn-primary">Volver al menú principal</a>
-                        </div>
-                    </div>
-                </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" th:href="@{/}">Agencia de Viajes</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/}">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/paquetes}">Paquetes Turísticos</a></li>
+                <li class="nav-item"><a class="nav-link active" th:href="@{/nosotros}">Nosotros</a></li>
+            </ul>
+            <div class="d-flex">
+                <a th:href="@{/admin/dashboard}" class="btn btn-outline-light ms-2">Administración</a>
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</nav>
+<!-- Hero Nosotros -->
+<section class="hero-bg" style="min-height: 45vh;">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+        <div class="mb-2">
+            <img src="/imagenes/icono-montaña.svg" width="90" alt="logo agencia" class="rounded-circle shadow" style="object-fit:cover;">
+        </div>
+        <div class="hero-title mb-1">Sobre Nosotros</div>
+        <div class="hero-sub">Tu viaje, nuestra pasión</div>
+    </div>
+</section>
+<div class="wave"></div>
+<!-- Nuestra historia -->
+<main class="container adventure-section mb-5">
+    <div class="row align-items-center mb-4">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <img src="https://images.unsplash.com/photo-1465101178521-c1a9136a3c5a?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow" alt="Equipo Agencia">
+        </div>
+        <div class="col-md-6">
+            <h3 class="fw-bold mb-3 text-primary">¿Quiénes somos?</h3>
+            <p>
+                Somos una agencia de viajes comprometida en crear <b>experiencias inolvidables</b> para nuestros clientes. Nuestro equipo está formado por apasionados del turismo y la aventura, con años de experiencia en el diseño de viajes y atención personalizada.
+            </p>
+            <ul>
+                <li>Más de 10 años en el sector turístico</li>
+                <li>Paquetes a medida para toda la familia y empresas</li>
+                <li>Asesoría personalizada antes, durante y después de tu viaje</li>
+                <li>Red de aliados internacionales</li>
+            </ul>
+        </div>
+    </div>
+    <!-- Valores y misión -->
+    <div class="row text-center mb-5">
+        <div class="col-12 mb-4">
+            <h4 class="fw-bold text-success">Nuestra misión y valores</h4>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+            <div class="card border-0 shadow h-100 p-3">
+                <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" width="50" class="mx-auto mb-2" alt="Confianza">
+                <h6>Confianza</h6>
+                <p class="small">Construimos relaciones honestas y duraderas con clientes y aliados.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+            <div class="card border-0 shadow h-100 p-3">
+                <img src="https://cdn-icons-png.flaticon.com/512/854/854894.png" width="50" class="mx-auto mb-2" alt="Innovación">
+                <h6>Innovación</h6>
+                <p class="small">Siempre buscamos nuevas formas de sorprenderte y mejorar tu experiencia.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+            <div class="card border-0 shadow h-100 p-3">
+                <img src="https://cdn-icons-png.flaticon.com/512/1055/1055672.png" width="50" class="mx-auto mb-2" alt="Calidad">
+                <h6>Calidad</h6>
+                <p class="small">Cuidamos cada detalle para que tu viaje sea perfecto y seguro.</p>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 mb-4">
+            <div class="card border-0 shadow h-100 p-3">
+                <img src="https://cdn-icons-png.flaticon.com/512/3126/3126552.png" width="50" class="mx-auto mb-2" alt="Pasión">
+                <h6>Pasión</h6>
+                <p class="small">Vivimos el turismo con entusiasmo y alegría, ¡y lo transmitimos en cada servicio!</p>
+            </div>
+        </div>
+    </div>
+    <!-- Equipo -->
+    <div class="row mb-4">
+        <div class="col-12 text-center mb-3">
+            <h4 class="fw-bold text-primary">Nuestro Equipo</h4>
+            <p class="text-secondary">Profesionales dedicados a que vivas la mejor aventura</p>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+            <div class="card border-0 shadow h-100 align-items-center p-3">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" width="90" class="rounded-circle mb-2 shadow" alt="Gerente">
+                <h6 class="mb-0">Carlos Ruiz</h6>
+                <span class="small text-muted">Gerente General</span>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+            <div class="card border-0 shadow h-100 align-items-center p-3">
+                <img src="https://randomuser.me/api/portraits/women/85.jpg" width="90" class="rounded-circle mb-2 shadow" alt="Coordinadora">
+                <h6 class="mb-0">Lucía Martínez</h6>
+                <span class="small text-muted">Coordinadora de Paquetes</span>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+            <div class="card border-0 shadow h-100 align-items-center p-3">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" width="90" class="rounded-circle mb-2 shadow" alt="Atención Cliente">
+                <h6 class="mb-0">Javier Torres</h6>
+                <span class="small text-muted">Atención al Cliente</span>
+            </div>
+        </div>
+        <div class="col-6 col-md-3 mb-3">
+            <div class="card border-0 shadow h-100 align-items-center p-3">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" width="90" class="rounded-circle mb-2 shadow" alt="Guía Experta">
+                <h6 class="mb-0">Valeria Gómez</h6>
+                <span class="small text-muted">Guía Experta</span>
+            </div>
+        </div>
+    </div>
+    <!-- CTA -->
+    <div class="row mt-5 justify-content-center">
+        <div class="col-md-8 text-center">
+            <h5 class="fw-bold text-success mb-3">¿Listo para tu próxima aventura?</h5>
+            <p>Explora nuestros paquetes turísticos, vive nuevas experiencias y déjanos acompañarte en el viaje de tus sueños.</p>
+            <a th:href="@{/paquetes}" class="btn btn-primary btn-lg me-2">Ver Paquetes</a>
+            <a th:href="@{/}" class="btn btn-outline-primary btn-lg">Volver al menú principal</a>
+        </div>
+    </div>
+</main>
+<footer class="bg-primary text-white text-center py-3">
+    <p class="mb-0">&copy; 2024 Agencia de Viajes</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,62 +1,114 @@
-
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Agencia de Viajes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/estilos.css}">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand" href="#">Agencia de Viajes</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/paquetes}">Paquetes Turísticos</a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/ventas}">Ventas/Facturación</a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/nosotros}">Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" th:href="@{/usuarios/nuevo}">Nuevo Usuario</a></li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" th:href="@{/login}">Inicio de Sesión</a></li>
-                </ul>
-                <form th:action="@{/logout}" method="post">
-                    <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn btn-danger">Cerrar sesión</button>
-                    </div>
-                </form>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary py-3">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-3" th:href="@{/}">Agencia de Viajes</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/paquetes}">Paquetes Turísticos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/nosotros}">Nosotros</a>
+                </li>
+            </ul>
+            <div class="d-flex">
+                <a th:href="@{/admin/dashboard}" class="btn btn-outline-light">Administración</a>
             </div>
         </div>
-    </nav>
-    <header class="bg-light py-5">
-        <div class="container text-center">
-            <h1 class="display-4">Bienvenido a la Agencia de Viajes</h1>
-            <p class="lead">Descubre destinos increíbles y vive experiencias únicas con nosotros.</p>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+        <div class="mb-2">
+            <img src="/imagenes/icono-montaña.svg" width="90" alt="adventure icon" style="filter: drop-shadow(0 2px 12px #0007)">
         </div>
-    </header>
-    <main class="container my-5">
-        <section class="row">
-            <div class="col-md-6">
-                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded shadow" alt="Viaje">
-            </div>
-            <div class="col-md-6 d-flex align-items-center">
-                <div>
-                    <h2>Gestiona tu viaje</h2>
-                    <p>Administra clientes, paquetes turísticos, ventas y reservas desde este panel principal. ¡Haz de tu viaje una experiencia inolvidable!</p>
-                    <a th:href="@{/paquetes}" class="btn btn-primary">Ver Paquetes</a>
+        <div class="hero-sub mb-2">Descubre</div>
+        <div class="hero-title mb-3">Viajes y Aventuras Únicas</div>
+        <a th:href="@{/paquetes}" class="btn btn-hero shadow me-2">Ver Paquetes</a>
+        <a th:href="@{/admin/dashboard}" class="btn btn-hero shadow me-2">Ir a Administración</a>
+    </div>
+</section>
+<div class="wave"></div>
+
+<!-- Destinos y gestión -->
+<main class="container adventure-section mb-4">
+    <div class="text-center adventure-title">Ideas para tu aventura</div>
+    <div class="row adventure-ideas justify-content-center g-4 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="card align-items-center">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Montaña">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Montañismo</h6>
+                    <p class="card-text small">Explora nuevas cumbres y siéntete en la cima del mundo.</p>
+                    <a th:href="@{/paquetes}" class="btn btn-sm mt-1">Explorar</a>
                 </div>
             </div>
-        </section>
-    </main>
-    <footer class="bg-primary text-white text-center py-3">
-        <p class="mb-0">&copy; 2024 Agencia de Viajes</p>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card align-items-center">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Kayak">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Kayak</h6>
+                    <p class="card-text small">Rema en ríos y lagos rodeado de naturaleza.</p>
+                    <a th:href="@{/paquetes}" class="btn btn-sm mt-1">Explorar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card align-items-center">
+                <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Bungee">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Bungee Jump</h6>
+                    <p class="card-text small">Vive la adrenalina con saltos inolvidables.</p>
+                    <a th:href="@{/paquetes}" class="btn btn-sm mt-1">Explorar</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card align-items-center">
+                <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=400&q=80" class="card-img-top" alt="Canoeing">
+                <div class="card-body text-center">
+                    <h6 class="card-title">Canoas</h6>
+                    <p class="card-text small">Explora ríos tranquilos y paisajes únicos.</p>
+                    <a th:href="@{/paquetes}" class="btn btn-sm mt-1">Explorar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mensaje principal de gestión para admins/usuarios -->
+    <div class="row align-items-center mt-5">
+        <div class="col-md-7">
+            <h2 class="fw-bold mb-2">Gestiona tu viaje</h2>
+            <p class="mb-0">
+                Administra clientes, paquetes turísticos, ventas y reservas desde este panel principal.<br>
+                Haz de tu viaje una experiencia inolvidable.
+            </p>
+        </div>
+        <div class="col-md-5 mt-3 mt-md-0">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80" class="img-fluid shadow rounded" alt="Viaje">
+        </div>
+    </div>
+</main>
+<footer class="bg-primary text-white text-center py-3">
+    <p class="mb-0">&copy; 2024 Agencia de Viajes</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-

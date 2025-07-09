@@ -15,13 +15,18 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                "/",
-                                "/login", "/login/**",
-                                "/usuarios/**","/nosotros",
-                                "/css/**", "/js/**", "/images/**"
+                                "/", "/login", "/login/**",
+                                "/usuarios/nuevo", "/nosotros",
+                                "/css/**", "/js/**", "/imagenes/**", "/uploads/**",
+                                "/paquetes"
                         ).permitAll()
-                        .requestMatchers("/clientes/**","/paquetes/**").hasAnyRole("VENDEDOR")
-                        .requestMatchers("/principal/**").hasRole("ADMINISTRADOR")
+                        // para el vendedor y administrador
+                        .requestMatchers("/clientes/**").hasAnyRole("VENDEDOR", "ADMINISTRADOR")
+                        // Solo VENDEDOR puede crear nueva factura, el resto de ventas solo ADMIN
+                        .requestMatchers("/ventas/nueva").hasAnyRole("VENDEDOR", "ADMINISTRADOR")
+                        // solo para el administrador
+                        .requestMatchers("/paquetes/**","/ventas/**","/usuarios/**").hasRole("ADMINISTRADOR")
+                        .requestMatchers("/admin/dashboard").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -33,7 +38,6 @@ public class SecurityConfig {
                         .logoutSuccessUrl("/login?logout")
                         .permitAll()
                 );
-
         return http.build();
     }
 

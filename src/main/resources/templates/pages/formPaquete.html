@@ -34,7 +34,10 @@
                     <h3 class="mb-0">Registrar Paquete</h3>
                 </div>
                 <div class="card-body">
-                    <form th:action="@{/paquetes/guardar}" th:object="${paquete}" method="post">
+                    <!-- IMPORTANTE: enctype para subir archivos -->
+                    <form th:action="@{/paquetes/guardar}" th:object="${paquete}" method="post" enctype="multipart/form-data">
+
+                        <input type="hidden" th:field="*{idPaquete}" />
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
                             <input type="text" th:field="*{nombre}" class="form-control" required />
@@ -54,6 +57,15 @@
                         <div class="mb-3">
                             <label class="form-label">Precio Anciano</label>
                             <input type="number" min="0" step="0.01" th:field="*{precioAnciano}" class="form-control" required />
+                        </div>
+                        <!-- Campo para imagen -->
+                        <div class="mb-3">
+                            <label class="form-label">Imagen del paquete</label>
+                            <input type="file" name="imagenArchivo" class="form-control" accept="image/*" />
+                            <!-- Si ya hay imagen, mostrarla (para edición) -->
+                            <div th:if="*{rutaImagen != null}">
+                                <img th:src="@{${paquete.rutaImagen}}" alt="Imagen actual" class="img-thumbnail mt-2" style="max-width: 200px;">
+                            </div>
                         </div>
                         <div class="d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Guardar</button>

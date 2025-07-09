@@ -13,6 +13,9 @@ public class Paquete {
     private Double precioNino;
     private Double precioAnciano;
 
+    // NUEVO: Campo para la ruta de la imagen
+    private String rutaImagen;
+
     public Long getIdPaquete() {
         return idPaquete;
     }
@@ -59,5 +62,14 @@ public class Paquete {
 
     public void setPrecioAnciano(Double precioAnciano) {
         this.precioAnciano = precioAnciano;
+    }
+
+    // Getter y Setter para la ruta de imagen
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
     }
 }
