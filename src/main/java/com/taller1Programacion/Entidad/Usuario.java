@@ -7,36 +7,39 @@ import java.util.Date;
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
-
-    @Column(unique = true, nullable = false)
-    private String nombreUsuario;
-    @Column(unique = true, nullable = false)
+    private Long id;
+    private String nombre;
+    private String direccion;
     private String email;
-    @Column(nullable = false)
-    private String contraseña;
+    private String username;
+    private String password;
 
-    @Temporal(TemporalType.DATE)
-    private Date fechaRegistro;
-
+    public Long getId() {
+        return id;
+    }
+    // Relación con un Rol
     @ManyToOne
-    @JoinColumn(name = "idRol")
+    @JoinColumn(name = "rol_id")
     private Rol rol;
 
-    public Long getIdUsuario() {
-        return idUsuario;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getEmail() {
@@ -47,20 +50,20 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getUsername() {
+        return username;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public Date getFechaRegistro() {
-        return fechaRegistro;
+    public String getPassword() {
+        return password;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Rol getRol() {

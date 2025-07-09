@@ -14,14 +14,19 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers( "/", "/login/**","/usuarios/**", "/css/**", "/js/**", "/images/**").permitAll()
+                        .requestMatchers(
+                                "/",
+                                "/login", "/login/**",
+                                "/usuarios/**","/nosotros",
+                                "/css/**", "/js/**", "/images/**"
+                        ).permitAll()
+                        .requestMatchers("/clientes/**","/paquetes/**").hasAnyRole("VENDEDOR")
+                        .requestMatchers("/principal/**").hasRole("ADMINISTRADOR")
                         .anyRequest().authenticated()
-
                 )
                 .formLogin(form -> form
                         .loginPage("/login").permitAll()
-                        .defaultSuccessUrl("/clientes",true)
-
+                        .defaultSuccessUrl("/postLogin", true)
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
@@ -29,7 +34,6 @@ public class SecurityConfig {
                         .permitAll()
                 );
 
-        // permite el acceso a recursos estáticos como CSS, JS e imágenes
         return http.build();
     }
 

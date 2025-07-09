@@ -20,10 +20,16 @@
                     <li class="nav-item"><a class="nav-link" th:href="@{/paquetes}">Paquetes Turísticos</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/ventas}">Ventas/Facturación</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/nosotros}">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/usuarios/nuevo}">Nuevo Usuario</a></li>
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" th:href="@{/login}">Inicio de Sesión</a></li>
                 </ul>
+                <form th:action="@{/logout}" method="post">
+                    <div class="d-flex justify-content-center">
+                        <button type="submit" class="btn btn-danger">Cerrar sesión</button>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>
@@ -53,3 +59,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

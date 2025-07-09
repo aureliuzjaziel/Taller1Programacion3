@@ -48,4 +48,5 @@ public class PaqueteControlador {
         paqueteServicio.eliminarPorId(id);
         return "redirect:/paquetes";
     }
+
 }
