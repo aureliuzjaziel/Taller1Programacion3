@@ -14,6 +14,11 @@ public class Venta {
     @ManyToOne
     private Paquete paquete;
 
+    // Nueva relación: Usuario que registra la venta
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
     private Integer cantidadAdultos;
     private Integer cantidadNinos;
     private Integer cantidadAncianos;
@@ -21,6 +26,8 @@ public class Venta {
     private Double subtotal;
     private Double iva;
     private Double total;
+
+    // Getters y Setters...
 
     public Long getIdVenta() {
         return idVenta;
@@ -44,6 +51,14 @@ public class Venta {
 
     public void setPaquete(Paquete paquete) {
         this.paquete = paquete;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public Integer getCantidadAdultos() {

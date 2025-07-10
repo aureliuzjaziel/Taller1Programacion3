@@ -36,12 +36,7 @@
         <h1 class="fw-bold">Panel de Administración</h1>
         <p class="lead">Accede a las funciones administrativas de acuerdo a tu rol.</p>
     </div>
-    <!-- Mensaje para anónimos -->
-    <div sec:authorize="isAnonymous()">
-        <div class="alert alert-warning text-center">
-            Debes iniciar sesión para acceder a las funciones administrativas.
-        </div>
-    </div>
+
     <!-- Panel para autenticados -->
     <div class="row g-4 justify-content-center" sec:authorize="isAuthenticated()">
         <!-- ADMINISTRADOR CARDS -->

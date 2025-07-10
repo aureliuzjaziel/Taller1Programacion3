@@ -38,6 +38,7 @@ public class ClienteControlador {
     @GetMapping("/editar/{id}")
     public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
         Cliente cliente = clienteServicio.buscarPorId(id);
+        System.out.println("Fecha nacimiento al editar: " + cliente.getFechaNacimiento());
         if (cliente == null) {
             return "redirect:/clientes";
         }

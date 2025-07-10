@@ -61,6 +61,7 @@
                     <div class="card-body">
                         <h2 class="card-title text-center mb-4">Registrar Cliente</h2>
                         <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post" onsubmit="return validarFormulario();">
+                            <input type="hidden" th:field="*{idCliente}" />
                             <div class="mb-3">
                                 <label class="form-label">Nombre</label>
                                 <input type="text" th:field="*{nombre}" class="form-control" required>

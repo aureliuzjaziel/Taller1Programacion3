@@ -1,7 +1,8 @@
 package com.taller1Programacion.Entidad;
 
 import jakarta.persistence.*;
-import java.util.Date;
+
+import java.util.List;
 
 @Entity
 public class Usuario {
@@ -21,6 +22,11 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "rol_id")
     private Rol rol;
+
+    //relacion con venta
+    @OneToMany(mappedBy = "usuario")
+    private List<Venta> ventas;
+
 
     public void setId(Long id) {
         this.id = id;

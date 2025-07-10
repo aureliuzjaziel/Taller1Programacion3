@@ -44,7 +44,7 @@ public class UsuarioControlador {
     @PostMapping("/guardar")
     public String guardarUsuario(@ModelAttribute Usuario usuario) {
         usuarioServicio.guardarUsuario(usuario);
-        return "redirect:/usuarios";
+        return "redirect:/usuarios/lista";
     }
     //editar usuario
     @GetMapping("/editarUsuario/{id}")
@@ -60,6 +60,6 @@ public class UsuarioControlador {
     @GetMapping("/eliminar/{id}")
     public String eliminarUsuario(@PathVariable Long id) {
         usuarioServicio.eliminarUsuario(id);
-        return "redirect:/usuarios";
+        return "redirect:/usuarios/lista";
     }
 }

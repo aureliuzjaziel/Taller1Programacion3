@@ -34,7 +34,7 @@
                     <h3 class="mb-0">Registrar Paquete</h3>
                 </div>
                 <div class="card-body">
-                    <!-- IMPORTANTE: enctype para subir archivos -->
+
                     <form th:action="@{/paquetes/guardar}" th:object="${paquete}" method="post" enctype="multipart/form-data">
 
                         <input type="hidden" th:field="*{idPaquete}" />

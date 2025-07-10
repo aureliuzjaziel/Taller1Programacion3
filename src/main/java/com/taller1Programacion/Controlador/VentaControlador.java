@@ -1,9 +1,13 @@
 package com.taller1Programacion.Controlador;
 
+import com.taller1Programacion.Entidad.Usuario;
 import com.taller1Programacion.Entidad.Venta;
 import com.taller1Programacion.Servicio.ClienteServicio;
 import com.taller1Programacion.Servicio.PaqueteServicio;
+import com.taller1Programacion.Servicio.UsuarioServicio;
 import com.taller1Programacion.Servicio.VentaServicio;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +18,18 @@ public class VentaControlador {
     private final VentaServicio ventaServicio;
     private final ClienteServicio clienteServicio;
     private final PaqueteServicio paqueteServicio;
+    private final UsuarioServicio usuarioServicio;
 
-    public VentaControlador(VentaServicio ventaServicio, ClienteServicio clienteServicio, PaqueteServicio paqueteServicio) {
+    public VentaControlador(
+            VentaServicio ventaServicio,
+            ClienteServicio clienteServicio,
+            PaqueteServicio paqueteServicio,
+            UsuarioServicio usuarioServicio
+    ) {
         this.ventaServicio = ventaServicio;
         this.clienteServicio = clienteServicio;
         this.paqueteServicio = paqueteServicio;
+        this.usuarioServicio = usuarioServicio;
     }
 
     @GetMapping
@@ -49,6 +60,15 @@ public class VentaControlador {
         venta.setIva(iva);
         venta.setTotal(total);
 
+        // --- ASOCIAR USUARIO AUTENTICADO ---
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Usuario usuario = usuarioServicio.buscarUsuarioPorUsername(username).orElse(null);
+        if (usuario != null) {
+            venta.setUsuario(usuario);
+        }
+        // -----------------------------------
+
         ventaServicio.guardar(venta);
         return "redirect:/ventas";
     }
@@ -67,7 +87,6 @@ public class VentaControlador {
 
     @PostMapping("/actualizar/{id}")
     public String actualizarVenta(@PathVariable Long id, @ModelAttribute Venta venta) {
-        // Igual que guardar pero actualizando el existente
         double subtotal =
                 venta.getCantidadAdultos() * venta.getPaquete().getPrecioAdulto() +
                         venta.getCantidadNinos() * venta.getPaquete().getPrecioNino() +
@@ -80,6 +99,16 @@ public class VentaControlador {
         venta.setTotal(total);
 
         venta.setIdVenta(id);
+
+        // --- ASOCIAR USUARIO AUTENTICADO ---
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Usuario usuario = usuarioServicio.buscarUsuarioPorUsername(username).orElse(null);
+        if (usuario != null) {
+            venta.setUsuario(usuario);
+        }
+        // -----------------------------------
+
         ventaServicio.guardar(venta);
         return "redirect:/ventas";
     }
